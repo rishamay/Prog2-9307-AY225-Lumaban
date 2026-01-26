@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prelim Lab Work 2</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #1d2671, #c33764);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .card {
+            background-color: #ffffff;
+            width: 380px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card h2 {
+            text-align: center;
+            color: #1d2671;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 14px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            margin-bottom: 18px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #1d2671;
+            box-shadow: 0 0 4px rgba(29, 38, 113, 0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #1d2671, #c33764);
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        #message {
+            margin-top: 18px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #timestamp {
+            margin-top: 6px;
+            text-align: center;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .toast {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 28px;
+            background: rgba(0,0,0,0.85);
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            z-index: 9999;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+            font-size: 13px;
+        }
+
+        .toast button {
+            background: transparent;
+            color: #ffd54f;
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 6px 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>🔐 Login System</h2>
+    <div class="subtitle">Prelim Laboratory Work</div>
+
+    <form id="loginForm">
+        <label>👤 Username</label>
+        <input type="text" id="username" placeholder="Enter username" required>
+
+        <label>🔑 Password</label>
+        <input type="password" id="password" placeholder="Enter password" required>
+
+        <button type="submit">LOG IN</button>
+    </form>
+
+    <div id="message" role="status" aria-live="polite"></div>
+    <div id="timestamp"></div>
+
+    <div class="attendance-controls" style="margin-top:12px; display:flex; gap:8px;">
+        <button id="downloadBtn" type="button" style="flex:1; padding:8px; font-weight:600; background:#eee; color:#333; border-radius:6px;">Download CSV</button>
+        <button id="clearBtn" type="button" style="flex:1; padding:8px; font-weight:600; background:#eee; color:#c62828; border-radius:6px;">Clear</button>
+    </div> 
+
+    <ul id="attendanceList" style="list-style:none; padding:0; margin-top:12px; max-height:150px; overflow:auto; border-top:1px solid #f0f0f0; padding-top:12px;"></ul>
+
+    <div class="footer">
+        <small> 2</small>
+    </div>
+</div>
+
+<!-- Toast notification -->
+<div id="toast" class="toast" role="status" aria-live="polite">
+    <span id="toastMessage">Message</span>
+    <button id="toastUndoBtn">Undo</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
