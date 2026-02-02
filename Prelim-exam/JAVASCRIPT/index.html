@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Records - 
+        Rishamay Lumaban 25-1407-939</title>
+    <style>
+        :root{
+            --bg: #f6f8fa;
+            --card: #ffffff;
+            --muted: #6b7280;
+            --accent: #2b6cb0;
+            --danger: #e53e3e;
+            --border: #e6eef6;
+        }
+        html,body{height:100%;}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg);
+            margin: 0;
+            padding: 28px 20px;
+            color: #111827;
+        }
+        .container{ max-width:1000px; margin:0 auto; }
+        .card{
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(30,60,90,0.06);
+            padding: 18px;
+        }
+        header h1{ margin:0 0 6px 0; font-size:18px; }
+        header p{ margin:0 0 12px 0; color:var(--muted); font-size:13px }
+
+        form#recordForm{
+            display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:12px;
+        }
+        form#recordForm input[type="text"]{
+            padding:8px 10px; border-radius:8px; border:1px solid var(--border); min-width:110px;
+        }
+        form#recordForm button{ padding:9px 14px; border-radius:8px; border:none; background:var(--accent); color:white; cursor:pointer; font-weight:600 }
+        form#recordForm button:hover{ box-shadow:0 8px 18px rgba(43,108,176,0.14) }
+
+        table{ width:100%; border-collapse:collapse; margin-top:6px; background:white; }
+        thead th{ text-align:left; padding:12px 14px; background:linear-gradient(180deg,#ffffff,#f7fbff); font-weight:600; border-bottom:1px solid var(--border); }
+        tbody td{ padding:12px 14px; border-bottom:1px solid #f1f5f9; color:#243b4a }
+        tbody tr:nth-child(even){ background:#fcfdff }
+        tbody tr:hover{ background:#f3f8ff }
+        table button{ background:transparent; color:var(--danger); border:none; cursor:pointer; font-weight:600 }
+
+        @media (max-width:720px){
+            form#recordForm{ gap:8px }
+            form#recordForm input[type="text"]{ min-width:90px }
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Records - Rishamay Lumaban 25-1407-939</h1>
+
+    <form id="recordForm">
+        Student ID: <input type="text" id="id">
+        First Name: <input type="text" id="firstName">
+        Last Name: <input type="text" id="lastName">
+        Lab Work 1: <input type="text" id="lab1">
+        Lab Work 2: <input type="text" id="lab2">
+        Lab Work 3: <input type="text" id="lab3">
+        Prelim Attendace Grade: <input type="text" id="grade">
+        <button type="button" onclick="addRecord()">Add</button>
+    </form>
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Lab Work 1</th>
+                <th>Lab Work 2</th>
+                <th>Lab Work 3</th>
+                <th>Prelim Attendance Grade</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
